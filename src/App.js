@@ -18,7 +18,13 @@ class App extends Component {
   render() {
     console.log(this.state.countries);
     const countries = this.state.countries.map((country, i) => (
-      <CountryCard key={i} name={country.name} img={country.flag} />
+      <CountryCard
+        key={i}
+        name={country.name}
+        img={country.flag}
+        population={country.population}
+        capital={country.capital}
+      />
     ));
     return <div className="App">{countries}</div>;
   }
