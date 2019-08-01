@@ -21,9 +21,10 @@ class App extends Component {
       <CountryCard
         key={i}
         name={country.name}
+        nativeName={country.nativeName}
         img={country.flag}
         population={country.population}
-        capital={country.capital}
+        capital={country.capital === '' ? 'N/A' : country.capital}
       />
     ));
     return <div className="App">{countries}</div>;
