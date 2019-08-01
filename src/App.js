@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import CountryCard from './components/CountryCard';
+
+// styling
 import './App.css';
 
 class App extends Component {
@@ -13,8 +16,9 @@ class App extends Component {
       .then(data => this.setState({ countries: data, isLoading: false }));
   }
   render() {
+    console.log(this.state.countries);
     const countries = this.state.countries.map((country, i) => (
-      <p key={i}>{country.name}</p>
+      <CountryCard key={i} name={country.name} img={country.flag} />
     ));
     return <div className="App">{countries}</div>;
   }
