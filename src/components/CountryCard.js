@@ -7,7 +7,7 @@ const card = {
   borderRadius: '15px'
 };
 
-const cImg = {
+const flagImg = {
   width: '100%',
   height: '200px',
   borderRadius: '15px 15px 0px 0px'
@@ -15,18 +15,27 @@ const cImg = {
 
 const details = {
   paddingTop: '8px',
-  paddingLeft: '8px',
-  paddingBottom: '8px'
+  paddingLeft: '1rem',
+  paddingBottom: '8px',
+  letterSpacing: '.5px'
 };
 
 const unorderedList = {
-  listStylePosition: 'inside',
+  listStyle: 'none',
   paddingTop: '8px'
+};
+
+const listItem = {
+  paddingTop: '6px'
+};
+
+const fontWeight500 = {
+  fontWeight: '500'
 };
 
 // const header = {};
 
-// function to add commas inside of population
+// function to add commas inside of population value
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
@@ -34,11 +43,20 @@ function numberWithCommas(x) {
 export default function CountryCard(props) {
   return (
     <div style={card}>
-      <img style={cImg} src={props.img} alt={props.name} />
+      <img style={flagImg} src={props.img} alt={props.name} />
       <div style={details}>
-        <h4>{props.name}</h4>
+        <h3>{props.name}</h3>
+        <span style={{ fontSize: '12px' }}>{props.nativeName}</span>
         <ul style={unorderedList}>
-          <li>Population: {numberWithCommas(props.population)}</li>
+          <li style={listItem}>
+            Capital: <span style={fontWeight500}>{props.capital}</span>
+          </li>
+          <li style={listItem}>
+            Population:{' '}
+            <span style={fontWeight500}>
+              {numberWithCommas(props.population)}
+            </span>
+          </li>
         </ul>
       </div>
     </div>
