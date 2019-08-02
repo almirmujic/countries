@@ -11,7 +11,7 @@ class App extends Component {
   }
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch('https://restcountries.eu/rest/v2/all')
+    fetch('https://restcountries.eu/rest/v2/' + 'name/united')
       .then(res => res.json())
       .then(data => this.setState({ countries: data, isLoading: false }));
   }
@@ -27,7 +27,21 @@ class App extends Component {
         capital={country.capital === '' ? 'N/A' : country.capital}
       />
     ));
-    return <div className="App">{countries}</div>;
+    return (
+      <div className="App">
+        <nav className="Nav">
+          <div className="Nav-content">
+            <span style={{ fontSize: '26px', alignSelf: 'center' }}>
+              Find a country
+            </span>
+            <input type="text" placeholder="Search Country" />
+          </div>
+        </nav>
+        <div className="AppGrid">
+          {this.state.isLoading ? <h1>Loading...</h1> : countries}
+        </div>
+      </div>
+    );
   }
 }
 
