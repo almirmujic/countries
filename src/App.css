@@ -1,8 +1,38 @@
 .App {
   max-width: 980px;
   margin: 0 auto;
+}
+.Nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: #f9f9f9fa;
+}
+.Nav-content {
+  display: flex;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: 20px;
+  height: inherit;
+}
+.App input {
+  margin-left: 20px;
+  font-size: 16px;
+  height: 35px;
+  padding: 10px 14px 10px 14px;
+  border-radius: 15px;
+  border: 0.5px solid #989898;
+  align-self: center;
+}
+.App input:focus {
+  outline: none;
+}
+.AppGrid {
   display: grid;
   grid-gap: 20px;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 300px);
+  margin-top: 80px;
 }
