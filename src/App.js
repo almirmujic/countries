@@ -4,14 +4,16 @@ import CountryCard from './components/CountryCard';
 // styling
 import './App.css';
 
+const url = 'https://restcountries.eu/rest/v2/';
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { countries: [], isLoading: false };
+    this.state = { countries: [], isLoading: false, search: '' };
   }
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch('https://restcountries.eu/rest/v2/' + 'name/united')
+    fetch(url + (this.state.search ? 'name/' + this.state.search : ''))
       .then(res => res.json())
       .then(data => this.setState({ countries: data, isLoading: false }));
   }
