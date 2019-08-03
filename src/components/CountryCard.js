@@ -42,12 +42,20 @@ function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-export default function CountryCard(props) {
+export default function CountryCard({
+  img,
+  name,
+  nativeName,
+  capital,
+  population,
+  lang,
+  nativeLang
+}) {
   return (
     <div style={card}>
-      <img style={flagImg} src={props.img} alt={props.name} />
+      <img style={flagImg} src={img} alt={name} />
       <div style={details}>
-        <h3 style={{ paddingTop: '1rem' }}>{props.name}</h3>
+        <h3 style={{ paddingTop: '1rem' }}>{name}</h3>
         <span
           style={{
             fontSize: '12px',
@@ -55,21 +63,19 @@ export default function CountryCard(props) {
             paddingBottom: '1rem'
           }}
         >
-          {props.nativeName}
+          {nativeName}
         </span>
         <ul style={unorderedList}>
           <li style={listItem}>
-            Capital: <span style={fontWeight500}>{props.capital}</span>
+            Capital: <span style={fontWeight500}>{capital}</span>
           </li>
           <li style={listItem}>
             Population:{' '}
-            <span style={fontWeight500}>
-              {numberWithCommas(props.population)}
-            </span>
+            <span style={fontWeight500}>{numberWithCommas(population)}</span>
           </li>
           <li style={listItem}>
-            Language: {props.nativeLang}
-            {props.lang === props.nativeLang ? '' : ` (${props.lang})`}
+            Language: {nativeLang}
+            {lang === nativeLang ? '' : ` (${lang})`}
           </li>
         </ul>
       </div>
