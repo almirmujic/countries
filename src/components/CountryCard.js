@@ -28,7 +28,7 @@ const unorderedList = {
 };
 
 const listItem = {
-  paddingTop: '6px'
+  paddingBottom: '1rem'
 };
 
 const fontWeight500 = {
@@ -47,8 +47,16 @@ export default function CountryCard(props) {
     <div style={card}>
       <img style={flagImg} src={props.img} alt={props.name} />
       <div style={details}>
-        <h3>{props.name}</h3>
-        <span style={{ fontSize: '12px' }}>{props.nativeName}</span>
+        <h3 style={{ paddingTop: '1rem' }}>{props.name}</h3>
+        <span
+          style={{
+            fontSize: '12px',
+            display: 'inline-block',
+            paddingBottom: '1rem'
+          }}
+        >
+          {props.nativeName}
+        </span>
         <ul style={unorderedList}>
           <li style={listItem}>
             Capital: <span style={fontWeight500}>{props.capital}</span>
@@ -58,6 +66,10 @@ export default function CountryCard(props) {
             <span style={fontWeight500}>
               {numberWithCommas(props.population)}
             </span>
+          </li>
+          <li style={listItem}>
+            Language: {props.nativeLang}
+            {props.lang === props.nativeLang ? '' : ` (${props.lang})`}
           </li>
         </ul>
       </div>
