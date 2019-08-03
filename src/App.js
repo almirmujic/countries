@@ -44,14 +44,20 @@ class App extends Component {
       <div className="App">
         <nav className="Nav">
           <div className="Nav-content">
-            <span style={{ fontSize: '26px', alignSelf: 'center' }}>
-              Find a country
+            <span
+              style={{
+                fontSize: '26px',
+                alignSelf: 'center',
+                fontWeight: '500'
+              }}
+            >
+              Countries
             </span>
             <input
               type="text"
               name="search"
               onChange={this.onChange}
-              placeholder="Search Country or City..."
+              placeholder="country or capital city..."
             />
           </div>
         </nav>
