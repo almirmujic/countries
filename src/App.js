@@ -42,6 +42,8 @@ class App extends Component {
           img={country.flag}
           population={country.population}
           capital={country.capital === '' ? 'N/A' : country.capital}
+          lang={country.languages[0].name}
+          nativeLang={country.languages[0].nativeName}
         />
       ));
     return (
