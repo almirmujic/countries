@@ -29,21 +29,21 @@ class App extends Component {
   render() {
     const countries = this.state.countries
       .filter(
-        country =>
-          country.name.toLowerCase().includes(this.state.search) ||
-          country.nativeName.toLowerCase().includes(this.state.search) ||
-          country.capital.toLowerCase().includes(this.state.search)
+        ({ name, nativeName, capital }) =>
+          name.toLowerCase().includes(this.state.search) ||
+          nativeName.toLowerCase().includes(this.state.search) ||
+          capital.toLowerCase().includes(this.state.search)
       )
-      .map((country, i) => (
+      .map(({ name, nativeName, flag, population, capital, languages }, i) => (
         <CountryCard
           key={i}
-          name={country.name}
-          nativeName={country.nativeName}
-          img={country.flag}
-          population={country.population}
-          capital={country.capital === '' ? 'N/A' : country.capital}
-          lang={country.languages[0].name}
-          nativeLang={country.languages[0].nativeName}
+          name={name}
+          nativeName={nativeName}
+          img={flag}
+          population={population}
+          capital={capital === '' ? 'N/A' : capital}
+          lang={languages[0].name}
+          nativeLang={languages[0].nativeName}
         />
       ));
     return (
@@ -68,7 +68,11 @@ class App extends Component {
           </div>
         </nav>
         <div className="AppGrid">
-          {this.state.isLoading ? <h1>Loading...</h1> : countries}
+          {this.state.isLoading ? (
+            <h1 style={{ color: '#97f8ff' }}>Loading...</h1>
+          ) : (
+            countries
+          )}
         </div>
       </div>
     );
