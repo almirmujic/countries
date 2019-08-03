@@ -48,4 +48,5 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 300px);
   margin-top: 80px;
+  margin-bottom: 4rem;
 }
