@@ -8,7 +8,7 @@
   left: 0;
   right: 0;
   height: 50px;
-  background-color: #f9f9f9fa;
+  background-color: #2c2536;
 }
 .Nav-content {
   display: flex;
@@ -16,6 +16,7 @@
   margin: 0 auto;
   padding-left: 20px;
   height: inherit;
+  color: #97f8ff;
 }
 .App input {
   margin-left: 20px;
@@ -24,11 +25,22 @@
   width: 350px;
   padding: 10px 14px 10px 14px;
   border-radius: 15px;
-  border: 0.5px solid #989898;
+  border: 0.5px solid #1f1a26;
+  color: #1f1a26;
   align-self: center;
+  background-color: #97f8ff;
 }
 .App input:focus {
   outline: none;
+}
+.App input::-webkit-input-placeholder {
+  color: #40364d;
+}
+.App input::-moz-placeholder {
+  color: #40364d;
+}
+.App input::-ms-input-placeholder {
+  color: #40364d;
 }
 .AppGrid {
   display: grid;
