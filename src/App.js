@@ -9,7 +9,11 @@ const url = 'https://restcountries.eu/rest/v2/all';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { countries: [], isLoading: false, search: '' };
+    this.state = {
+      countries: [],
+      isLoading: false,
+      search: ''
+    };
     this.onChange = this.onChange.bind(this);
   }
   componentDidMount() {
