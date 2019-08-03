@@ -4,31 +4,42 @@ import CountryCard from './components/CountryCard';
 // styling
 import './App.css';
 
-const url = 'https://restcountries.eu/rest/v2/';
+const url = 'https://restcountries.eu/rest/v2/all';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { countries: [], isLoading: false, search: '' };
+    this.onChange = this.onChange.bind(this);
   }
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch(url + (this.state.search ? 'name/' + this.state.search : ''))
+    fetch(url)
       .then(res => res.json())
-      .then(data => this.setState({ countries: data, isLoading: false }));
+      .then(data => this.setState({ countries: data, isLoading: false }))
+      .catch(err => console.log(err));
+  }
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value.toLowerCase() });
   }
   render() {
-    console.log(this.state.countries);
-    const countries = this.state.countries.map((country, i) => (
-      <CountryCard
-        key={i}
-        name={country.name}
-        nativeName={country.nativeName}
-        img={country.flag}
-        population={country.population}
-        capital={country.capital === '' ? 'N/A' : country.capital}
-      />
-    ));
+    const countries = this.state.countries
+      .filter(
+        country =>
+          country.name.toLowerCase().includes(this.state.search) ||
+          country.nativeName.toLowerCase().includes(this.state.search) ||
+          country.capital.toLowerCase().includes(this.state.search)
+      )
+      .map((country, i) => (
+        <CountryCard
+          key={i}
+          name={country.name}
+          nativeName={country.nativeName}
+          img={country.flag}
+          population={country.population}
+          capital={country.capital === '' ? 'N/A' : country.capital}
+        />
+      ));
     return (
       <div className="App">
         <nav className="Nav">
@@ -36,7 +47,12 @@ class App extends Component {
             <span style={{ fontSize: '26px', alignSelf: 'center' }}>
               Find a country
             </span>
-            <input type="text" placeholder="Search Country" />
+            <input
+              type="text"
+              name="search"
+              onChange={this.onChange}
+              placeholder="Search Country or City..."
+            />
           </div>
         </nav>
         <div className="AppGrid">
