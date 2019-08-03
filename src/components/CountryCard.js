@@ -4,7 +4,8 @@ const card = {
   boxSizing: 'border-box',
   width: '300px',
   boxShadow: '3px 3px 8px -4px',
-  borderRadius: '15px'
+  borderRadius: '15px',
+  backgroundColor: '#30273c'
 };
 
 const flagImg = {
@@ -17,7 +18,8 @@ const details = {
   paddingTop: '8px',
   paddingLeft: '1rem',
   paddingBottom: '8px',
-  letterSpacing: '.5px'
+  letterSpacing: '.5px',
+  color: '#97f8ff'
 };
 
 const unorderedList = {
