@@ -4,7 +4,7 @@ import CountryCard from './components/CountryCard';
 // styling
 import './App.css';
 
-const url = 'https://restcountries.eu/rest/v2/all';
+const countriesUrl = 'https://restcountries.eu/rest/v2/all';
 
 class App extends Component {
   constructor(props) {
@@ -15,13 +15,18 @@ class App extends Component {
       search: ''
     };
     this.onChange = this.onChange.bind(this);
+    this.fetchData = this.fetchData.bind(this);
   }
-  componentDidMount() {
+
+  async fetchData() {
     this.setState({ isLoading: true });
-    fetch(url)
-      .then(res => res.json())
-      .then(data => this.setState({ countries: data, isLoading: false }))
-      .catch(err => console.log(err));
+    let response = await fetch(countriesUrl);
+    let data = await response.json();
+    this.setState({ countries: data, isLoading: false });
+  }
+
+  componentDidMount() {
+    this.fetchData();
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value.toLowerCase() });
