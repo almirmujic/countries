@@ -29,7 +29,8 @@ class App extends Component {
     this.fetchData();
   }
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value.toLowerCase() });
+    const updatedValue = e.target.value.toLowerCase();
+    this.setState({ [e.target.name]: updatedValue });
   }
   render() {
     const countries = this.state.countries
