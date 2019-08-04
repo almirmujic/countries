@@ -1,5 +1,6 @@
 import React from 'react';
 
+// styling
 const card = {
   boxSizing: 'border-box',
   width: '300px',
@@ -14,12 +15,22 @@ const flagImg = {
   borderRadius: '15px 15px 0px 0px'
 };
 
-const details = {
+const detailsContainer = {
   paddingTop: '8px',
   paddingLeft: '1rem',
   paddingBottom: '8px',
   letterSpacing: '.5px',
   color: '#97f8ff'
+};
+
+const countryName = {
+  paddingTop: '1rem'
+};
+
+const countryNativeName = {
+  fontSize: '12px',
+  display: 'inline-block',
+  paddingBottom: '1rem'
 };
 
 const unorderedList = {
@@ -34,8 +45,6 @@ const listItem = {
 const fontWeight500 = {
   fontWeight: '500'
 };
-
-// const header = {};
 
 // function to add commas inside of population value
 function numberWithCommas(x) {
@@ -54,17 +63,9 @@ export default function CountryCard({
   return (
     <div style={card}>
       <img style={flagImg} src={img} alt={name} />
-      <div style={details}>
-        <h3 style={{ paddingTop: '1rem' }}>{name}</h3>
-        <span
-          style={{
-            fontSize: '12px',
-            display: 'inline-block',
-            paddingBottom: '1rem'
-          }}
-        >
-          {nativeName}
-        </span>
+      <div style={detailsContainer}>
+        <h3 style={countryName}>{name}</h3>
+        <span style={countryNativeName}>{nativeName}</span>
         <ul style={unorderedList}>
           <li style={listItem}>
             Capital: <span style={fontWeight500}>{capital}</span>

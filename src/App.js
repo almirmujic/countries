@@ -4,6 +4,16 @@ import CountryCard from './components/CountryCard';
 // styling
 import './App.css';
 
+const logoStyle = {
+  fontSize: '26px',
+  alignSelf: 'center',
+  fontWeight: '500'
+};
+
+const loadingStyle = {
+  color: '#97f8ff'
+};
+
 const countriesUrl = 'https://restcountries.eu/rest/v2/all';
 
 class App extends Component {
@@ -56,15 +66,7 @@ class App extends Component {
       <div className="App">
         <nav className="Nav">
           <div className="Nav-content">
-            <span
-              style={{
-                fontSize: '26px',
-                alignSelf: 'center',
-                fontWeight: '500'
-              }}
-            >
-              Countries
-            </span>
+            <span style={logoStyle}>Countries</span>
             <input
               type="text"
               name="search"
@@ -75,7 +77,7 @@ class App extends Component {
         </nav>
         <div className="AppGrid">
           {this.state.isLoading ? (
-            <h1 style={{ color: '#97f8ff' }}>Loading...</h1>
+            <h2 style={loadingStyle}>Loading...</h2>
           ) : (
             countries
           )}
