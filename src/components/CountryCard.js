@@ -6,7 +6,7 @@ const card = {
   width: '300px',
   boxShadow: '3px 3px 8px -4px',
   borderRadius: '15px',
-  backgroundColor: '#30273c'
+  backgroundColor: 'rgb(31, 34, 63)'
 };
 
 const flagImg = {
